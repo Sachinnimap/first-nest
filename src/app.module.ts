@@ -1,7 +1,11 @@
 import {Module} from "@nestjs/common"
-import {LibraryController} from "./book/book.controller"
+import {BookController} from "./book/book.controller"
+import {UsersController} from "./user/user.controller"
+import {UserStore} from "./user.store"
+
 @Module({
-  controllers: [LibraryController]
+  controllers: [BookController,UsersController],
+  providers : [UserStore]
 })
 
 export class AppModule{};
