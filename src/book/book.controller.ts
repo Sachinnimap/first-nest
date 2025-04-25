@@ -1,13 +1,13 @@
 import { Controller, Delete, Get, Post, Put, Req, Res,HttpStatus,HttpCode, Header, Redirect, Inject } from "@nestjs/common";
 import { Request, Response } from "express"
 import { bookList} from "../components/data"
-import { UserStore } from "src/user.store";
+import {BookStore} from "../book.store"
 
 @Controller("/books")
 export class BookController {
 
-    constructor(@Inject(UserStore) store:any){
-      console.log("Book_controctor_inject:- ", store)
+    constructor(@Inject(BookStore) bookStore:any){
+      console.log("Book_controctor_inject:- ", bookStore)
     }
   //get list of books
   @Get('/')

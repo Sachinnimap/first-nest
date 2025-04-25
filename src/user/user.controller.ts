@@ -1,12 +1,14 @@
-import { Controller ,Get, Headers, Param, Query,Post, Body, HttpCode, Put} from "@nestjs/common";
+import { Controller ,Get, Headers, Param, Query,Post, Body, HttpCode, Put, Inject} from "@nestjs/common";
 import {userList} from "../components/data"
 import {User, UserParams,UserQuery} from  "../components/format"
-
-
+import {UserStore} from "../user.store"
 
 @Controller("/users")
 export class UsersController {
 
+        constructor(@Inject(UserStore) store:any){
+            console.log("UserController:-", store)
+        }
     @Get("/activeUsers/:id")
     getActiveUsers(@Param("id") id:number, @Query() userQuery:UserQuery ){ //only id will be accessible as number 
             console.log("ID",id)
