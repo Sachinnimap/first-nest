@@ -1,11 +1,12 @@
 import {Module} from "@nestjs/common"
-import {BookController} from "./modules/book/book.controller"
-import {UsersController} from "./modules/user/user.controller"
-import {UserStore} from "./modules/user/user.store"
-import {BookStore} from "./modules/book/book.store"
-import { LibraryController } from "./modules/library/library.controller"
-import { StudentController } from "./modules/student/student.controller"
-import { StudentService } from "./modules/student/student.service"
+import {BookController} from "./book/book.controller"
+import {UsersController} from "./user/user.controller"
+import {UserStore} from "./user/user.store"
+import {BookStore} from "./book/book.store"
+import { LibraryController } from "./library/library.controller"
+import { StudentController } from "./student/student.controller"
+import { StudentService } from "./student/student.service"
+import { PrincipleModule } from "./modules/principle/principle.module"
 
 let isWokring: boolean = false;
 
@@ -19,6 +20,7 @@ function handleAsyncFunc(){
 }
 
 @Module({
+  imports : [PrincipleModule],
   controllers: [BookController,UsersController,LibraryController,StudentController],
   //Provide - UserStore - directly can be passed! 
   // or use this object provide - name & useClass - className which we going to use 

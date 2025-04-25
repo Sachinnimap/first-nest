@@ -1,6 +1,6 @@
 import { Controller, Delete,  Get, Post, Put, Req, Res,HttpStatus,HttpCode, Header, Redirect, Inject } from "@nestjs/common";
 import { Request, Response } from "express"
-import { bookList} from "../../components/data"
+import { bookList} from "../components/data"
 import {BookStore} from "./book.store"
 
 @Controller("/books")
