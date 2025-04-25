@@ -1,9 +1,11 @@
 import {Module} from "@nestjs/common"
-import {BookController} from "./book/book.controller"
-import {UsersController} from "./user/user.controller"
-import {UserStore} from "./user.store"
-import {BookStore} from "./book.store"
-import { LibraryController } from "./library/library.controller"
+import {BookController} from "./modules/book/book.controller"
+import {UsersController} from "./modules/user/user.controller"
+import {UserStore} from "./modules/user/user.store"
+import {BookStore} from "./modules/book/book.store"
+import { LibraryController } from "./modules/library/library.controller"
+import { StudentController } from "./modules/student/student.controller"
+import { StudentService } from "./modules/student/student.service"
 
 let isWokring: boolean = false;
 
@@ -12,16 +14,17 @@ function handleAsyncFunc(){
    return new Promise((resolve,reject)=>{
     setTimeout(()=>{
           resolve('connnection sucess!')
-      },5000)
+      },100)
 })
 }
 
 @Module({
-  controllers: [BookController,UsersController,LibraryController],
+  controllers: [BookController,UsersController,LibraryController,StudentController],
   //Provide - UserStore - directly can be passed! 
   // or use this object provide - name & useClass - className which we going to use 
   // useValue instead of  useClass - we can use anything like variable or object or array!
-  providers : [
+  providers : [StudentService,
+    
       //__________Factory-based Provider______________ used in libraryController
       {provide : "factoryFunc", useFactory:async (limitValue)=> {
         console.log("limit:-",limitValue)

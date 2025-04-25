@@ -1,7 +1,7 @@
 import { Controller, Delete,  Get, Post, Put, Req, Res,HttpStatus,HttpCode, Header, Redirect, Inject } from "@nestjs/common";
 import { Request, Response } from "express"
-import { bookList} from "../components/data"
-import {BookStore} from "../book.store"
+import { bookList} from "../../components/data"
+import {BookStore} from "./book.store"
 
 @Controller("/books")
 export class BookController {
@@ -19,7 +19,7 @@ export class BookController {
       console.log("bookArr",bookArr)
       console.log("Book_controctor_inject:- ", bookStore)
     }
-    
+
   //get list of books
   @Get('/')
   @Header("My-Header", 'John Doe!') //Header - "any Name & any Value"

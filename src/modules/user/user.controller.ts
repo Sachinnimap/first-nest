@@ -1,7 +1,7 @@
 import { Controller ,Get, Headers, Param, Query,Post, Body, HttpCode, Put, Inject} from "@nestjs/common";
-import {userList} from "../components/data"
-import {User, UserParams,UserQuery} from  "../components/format"
-import {UserStore} from "../user.store"
+import {userList} from "../../components/data"
+import {User, UserParams,UserQuery} from  "../../components/format"
+import {UserStore} from "./user.store"
 
 @Controller("/users")
 export class UsersController {

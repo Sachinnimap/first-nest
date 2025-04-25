@@ -12,5 +12,4 @@ export class  BookStore{
     getBooks(){
             return this.Books;
     }
-
 }
