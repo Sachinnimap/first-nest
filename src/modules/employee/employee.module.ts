@@ -11,4 +11,4 @@ import { cacheStoreService } from "../cache-store/cache-store.service";
      providers  :[EmployeeService],
 })
 
-export class EmployeeModule{}
+export class EmployeeModule1{}

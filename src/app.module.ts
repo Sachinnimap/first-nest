@@ -8,11 +8,18 @@ import { StudentController } from "./student/student.controller"
 import { StudentService } from "./student/student.service"
 import { PrincipleModule } from "./modules/principle/principle.module"
 import { cacheStoreModule } from "./modules/cache-store/cache-store.module"
-import { EmployeeModule } from "./modules/employee/employee.module"
+import { EmployeeModule1 } from "./modules/employee/employee.module"
 import { JobModule } from "./modules/job/job.module"
 import { cacheStoreService } from "./modules/cache-store/cache-store.service"
 import { AppService } from "./app.service"
 import { StudentModule } from "./student/student.module"
+import { libraryModule } from "./library/library.module"
+import { AppExceptionFilter } from "./exceptions/app-exception.filter"
+import { APP_FILTER } from "@nestjs/core"
+import { StaffModule } from "./application-lifecycle/staff/staff.module"
+import { EmployeeModule } from "./application-lifecycle/employee/employee.module"
+import { ElectronicModule } from "./with-middleware/electronics/electronic.module"
+import { InterviewModule } from "./with-middleware/interview/interview.module"
 
 let isWokring: boolean = false;
 
@@ -26,13 +33,16 @@ function handleAsyncFunc(){
 }
 
 @Module({
-  imports : [ StudentModule,EmployeeModule,JobModule, PrincipleModule,cacheStoreModule.register("First_Type")],
+  imports : [ElectronicModule, InterviewModule,  EmployeeModule, StaffModule, libraryModule ,StudentModule,EmployeeModule,JobModule, PrincipleModule,cacheStoreModule.register("First_Type")],
   controllers: [BookController,UsersController,StudentController], //LibraryController
   // Provide - UserStore - directly can be passed! 
   // or use this object provide - name & useClass - className which we going to use 
   // useValue instead of  useClass - we can use anything like variable or object or array!
   providers : [StudentService,AppService,
     
+
+    //exception provider GLOABALLY for any type exception handle
+    {provide:"APP_FILTER" , useClass : AppExceptionFilter}, //APP_FILTER from nest/CORE
       //__________Factory-based Provider______________ used in libraryController
     //   {provide : "factoryFunc", useFactory:async (limitValue)=> {
     //     console.log("limit:-",limitValue)
