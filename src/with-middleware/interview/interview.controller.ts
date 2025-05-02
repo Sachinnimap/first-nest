@@ -1,7 +1,13 @@
-import { Controller } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 
 
-@Controller()
+@Controller("/interviews")
 export class  InterviewController{
     
+    @Get()
+    getAllInterviewsList(){
+        console.log("Interview List called!")
+        return 'Interview List'
+    }   
+
 }
